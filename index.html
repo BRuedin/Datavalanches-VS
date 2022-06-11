@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VData Avalanches</title>
+    <style>
+        svg {
+            background-color: rgb(218, 250, 250);
+            margin : 0 auto;}
+    </style>
+</head>
+<body>
+    <script src = "https://cdn.jsdelivr.net/npm/d3@7.3.0/dist/d3.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/7.4.4/d3.min.js'></script>
+    <script>
+        const hauteur = window.innerHeight;
+        const largeur = window.innerWidth;
+    
+        d3.csv("AvalancheAccidentsSwitzerlandSince1995.csv", function(d){
+            return{
+                id : d.avalancheId,
+                date : d.date,
+                annéeHydrologique : d.hydrologicalYear,
+                lieuDit : d.localName,
+                Canton : d.canton,
+                nombreDeMorts : d.numberDead,
+                activité : d.activity,
+            }})
+        .then(myData =>{
+
+            let totalMorts = d3.sum(myData, d => d.nombreDeMorts)
+            console.log("Total des morts par avalanches en Suisse depuis 1995/96 :", totalMorts);
+            
+            //VS
+            let avalanchesVS = d3.filter(myData, d => d.Canton == 'VS')
+            console.log("Avalanches dans le canton du Valais", avalanchesVS);
+            let avalanchesVSAnnee = d3.group(avalanchesVS, d => d.annéeHydrologique)
+            console.log("Avalanches en Valais par année", avalanchesVSAnnee);
+            let mortsVS = d3.sum(avalanchesVS, d => d.nombreDeMorts)
+            console.log("Morts dans le canton du Valais", mortsVS);
+            let mortsVSAnnee = d3.rollups(avalanchesVS, v => d3.sum(v,d => d.nombreDeMorts), d => d.annéeHydrologique)
+            console.log("Morts en Valais par année :", mortsVSAnnee);
+
+            //BE
+            let avalanchesBE = d3.filter(myData, d => d.Canton == 'BE')
+            console.log("Avalanches dans le canton de Berne", avalanchesBE);
+            let mortsBE = d3.sum(avalanchesBE, d => d.nombreDeMorts)
+            console.log("Morts dans le canton de Berne", mortsBE);
+            let mortsBEAnnee = d3.rollups(avalanchesBE, v => d3.sum(v,d => d.nombreDeMorts), d => d.annéeHydrologique)
+            console.log("Morts à Berne par année :", mortsBEAnnee);
+
+            //GR
+            let avalanchesGR = d3.filter(myData, d => d.Canton == 'GR')
+            console.log("Avalanches dans le canton des Grisons", avalanchesGR);
+            let mortsGR = d3.sum(avalanchesGR, d => d.nombreDeMorts)
+            console.log("Morts dans le canton des Grisons", mortsGR);
+            let mortsGRAnnee = d3.rollups(avalanchesGR, v => d3.sum(v,d => d.nombreDeMorts), d => d.annéeHydrologique)
+            console.log("Morts dans les Grisons par année :", mortsGRAnnee);
+
+            //VD
+            let avalanchesVD = d3.filter(myData, d => d.Canton == 'VD')
+            console.log("Avalanches dans le canton de Vaud", avalanchesVD);
+            let mortsVD = d3.sum(avalanchesVD, d => d.nombreDeMorts)
+            console.log("Morts dans le canton de Vaud", mortsVD);
+            let mortsVDAnnee = d3.rollups(avalanchesVD, v => d3.sum(v,d => d.nombreDeMorts), d => d.annéeHydrologique)
+            console.log("Morts en Vaudoisie par année :", mortsVDAnnee);
+
+            //TI
+            let avalanchesTI = d3.filter(myData, d => d.Canton == 'TI')
+            console.log("Avalanches dans le canton du Tessin", avalanchesTI);
+            let mortsTI = d3.sum(avalanchesTI, d => d.nombreDeMorts)
+            console.log("Morts dans le canton du Tessin", mortsTI);
+            let mortsTIAnnee = d3.rollups(avalanchesTI, v => d3.sum(v,d => d.nombreDeMorts), d => d.annéeHydrologique)
+            console.log("Morts au Tessin par année :", mortsTIAnnee);
+
+            //OW
+            let avalanchesOW = d3.filter(myData, d => d.Canton == 'OW')
+            console.log("Avalanches dans le canton d'Obwald'", avalanchesOW);
+            let mortsOW = d3.sum(avalanchesOW, d => d.nombreDeMorts)
+            console.log("Morts dans le canton d'Obwald'", mortsOW);
+            let mortsOWAnnee = d3.rollups(avalanchesOW, v => d3.sum(v,d => d.nombreDeMorts), d => d.annéeHydrologique)
+            console.log("Morts à Obwald par année :", mortsOWAnnee);
+
+            //NW
+            let avalanchesNW = d3.filter(myData, d => d.Canton == 'NW')
+            console.log("Avalanches dans le canton de Nidwald", avalanchesNW);
+            let mortsNW = d3.sum(avalanchesNW, d => d.nombreDeMorts)
+            console.log("Morts dans le canton de Nidwald", mortsNW);
+            let mortsNWAnnee = d3.rollups(avalanchesNW, v => d3.sum(v,d => d.nombreDeMorts), d => d.annéeHydrologique)
+            console.log("Morts à Nidwald par année :", mortsNWAnnee);
+
+            //UR
+            let avalanchesUR = d3.filter(myData, d => d.Canton == 'UR')
+            console.log("Avalanches dans le canton d'Uri", avalanchesUR);
+            let mortsUR = d3.sum(avalanchesUR, d => d.nombreDeMorts)
+            console.log("Morts dans le canton d'Uri", mortsUR);
+            let mortsURAnnee = d3.rollups(avalanchesUR, v => d3.sum(v,d => d.nombreDeMorts), d => d.annéeHydrologique)
+            console.log("Morts à Uri par année :", mortsURAnnee);
+
+            //FR
+            let avalanchesFR = d3.filter(myData, d => d.Canton == 'FR')
+            console.log("Avalanches dans le canton de Fribourg", avalanchesFR);
+            let mortsFR = d3.sum(avalanchesFR, d => d.nombreDeMorts)
+            console.log("Morts dans le canton de Fribourg", mortsFR);
+            let mortsFRAnnee = d3.rollups(avalanchesFR, v => d3.sum(v,d => d.nombreDeMorts), d => d.annéeHydrologique)
+            console.log("Morts à Fribourg par année :", mortsFRAnnee);
+
+            //SZ
+            let avalanchesSZ = d3.filter(myData, d => d.Canton == 'SZ')
+            console.log("Avalanches dans le canton de Schwytz", avalanchesSZ);
+            let mortsSZ = d3.sum(avalanchesSZ, d => d.nombreDeMorts)
+            console.log("Morts dans le canton de Schwytz", mortsSZ);
+            let mortsSZAnnee = d3.rollups(avalanchesSZ, v => d3.sum(v,d => d.nombreDeMorts), d => d.annéeHydrologique)
+            console.log("Morts à Schwytz par année :", mortsSZAnnee);
+
+            //SG
+            let avalanchesSG = d3.filter(myData, d => d.Canton == 'SG')
+            console.log("Avalanches dans le canton de St-Gall", avalanchesSG);
+            let mortsSG = d3.sum(avalanchesSG, d => d.nombreDeMorts)
+            console.log("Morts dans le canton de St-Gall", mortsSG);
+            let mortsSGAnnee = d3.rollups(avalanchesSG, v => d3.sum(v,d => d.nombreDeMorts), d => d.annéeHydrologique)
+            console.log("Morts à St-Gall par année :", mortsSGAnnee);
+
+            //GL
+            let avalanchesGL = d3.filter(myData, d => d.Canton == 'GL')
+            console.log("Avalanches dans le canton de Glaris'", avalanchesGL);
+            let mortsGL = d3.sum(avalanchesGL, d => d.nombreDeMorts)
+            console.log("Morts dans le canton de Glaris", mortsGL);
+            let mortsGLAnnee = d3.rollups(avalanchesGL, v => d3.sum(v,d => d.nombreDeMorts), d => d.annéeHydrologique)
+            console.log("Morts à Glaris par année :", mortsGLAnnee);
+
+            //OW/LU
+            let avalanchesOWLU = d3.filter(myData, d => d.Canton == 'OW/LU')
+            console.log("Avalanches dans les cantons d'Owbald/Lucerne", avalanchesOWLU);
+            let mortsOWLU = d3.sum(avalanchesOWLU, d => d.nombreDeMorts)
+            console.log("Morts dans les cantons d'Obwald/Lucerne", mortsOWLU);
+            let mortsOWLUAnnee = d3.rollups(avalanchesOWLU, v => d3.sum(v,d => d.nombreDeMorts), d => d.annéeHydrologique)
+            console.log("Morts à Obwald/Lucerne par année :", mortsOWLUAnnee);
+
+            //AI
+            let avalanchesAI = d3.filter(myData, d => d.Canton == 'AI')
+            console.log("Avalanches dans le canton d'Argovie", avalanchesAI);
+            let mortsAI = d3.sum(avalanchesAI, d => d.nombreDeMorts)
+            console.log("Morts dans le canton d'Argovie", mortsAI);
+            let mortsAIAnnee = d3.rollups(avalanchesAI, v => d3.sum(v,d => d.nombreDeMorts), d => d.annéeHydrologique)
+            console.log("Morts en Argovie par année :", mortsAIAnnee);
+
+            //LU
+            let avalanchesLU = d3.filter(myData, d => d.Canton == 'LU')
+            console.log("Avalanches dans le canton de Lucerne", avalanchesLU);
+            let mortsLU = d3.sum(avalanchesLU, d => d.nombreDeMorts)
+            console.log("Morts dans le canton de Lucerne", mortsLU);
+            let mortsLUAnnee = d3.rollups(avalanchesLU, v => d3.sum(v,d => d.nombreDeMorts), d => d.annéeHydrologique)
+            console.log("Morts à Lucerne par année :", mortsLUAnnee);
+
+            //Mise en place du canevas
+            const canevas1 = d3.select("body")
+                    .append ("svg")
+                    .attr("width", largeur)
+                    .attr("height", hauteur);
+            
+            //Echelle des x
+            const x = d3.scaleBand()
+                .domain(avalanchesVS.map(d => d.annéeHydrologique))
+                .range([10,1050])
+                .padding(0.5);
+            console.log("Test échelle x", x("1995/96"))
+
+            //Création de l'axe X
+            canevas1.append('g')
+                .classed('axeX', true)
+                .attr("transform", 'translate(50,500)')
+                .call(d3.axisBottom(x).ticks(26))
+                .selectAll("text")
+                    .attr("transform", "translate(-10,0)rotate(-45)")
+                    .style("text-anchor", "end");
+
+            //Echelle des y
+            const y = d3.scaleLinear()
+                .domain([0,d3.max(  mortsVSAnnee.map((value,index) => value[1]))])
+                .range([300, -150])
+            console.log("Test échelle y", y(15));
+            console.log(mortsVSAnnee.map((value,index) => value[1]));
+
+            //Création de l'axe Y
+            canevas1.append("g")
+                .classed('axeY', true)
+                .attr("transform", 'translate(60,200)')
+                .call(d3.axisLeft(y))
+    
+            //Création des rectangles du graphique pour le Valais
+            canevas1.selectAll("rect")
+                .data(mortsVSAnnee)
+                .enter()
+                .append("rect")
+                    .attr('x', function(d){return 50 + x(d.annéeHydrologique)})
+                    .attr('y', function(d){return 500 - y(d.nombreDeMorts)})
+                    .attr("width", x.bandwidth())
+                    .attr("height", function(d){return y(d.nombreDeMorts)})
+                    .style("fill", "lightgrey")
+                    .style('stroke',"blue")
+            
+            
+
+            
+
+        })
+    </script>
+
+</body>
+</html>
