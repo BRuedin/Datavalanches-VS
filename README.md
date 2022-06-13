@@ -2,7 +2,7 @@
 
 # 1. Description
 
-Cette visualisation de données tente de visualiser un set de données comptabilisant les accidents mortels causés par des avalanches en Suisse depuis l'hiver 1995/96. 
+Cette visualisation de données tente de visualiser un set de données comptabilisant les accidents mortels causés par des avalanches en Suisse depuis l'hiver 1995/96 jusqu'à 2020/2021. 
 Mis à diposition par _l'Institut pour l'étude de la neige et des avalanches_ sur son site (https://www.slf.ch/fr/index.html), ce set de données en format .csv est extrêmement riche et complet.
 
 <img width="1422" alt="Capture d’écran 2022-06-13 à 12 52 03" src="https://user-images.githubusercontent.com/100225833/173338507-572d1b69-5d79-4a1e-9663-4d09177d0cef.png">
