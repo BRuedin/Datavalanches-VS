@@ -36,12 +36,22 @@ Chaque entrée du jeu de données correspond à une avalanches ayant fait des vi
 - le nombre de personnes complètement enneigées par l'avalanche
 - l'activité des victimes (hors-piste, ski de randonnée, traversée de couloir, dans un bâtiment, autres/mix/inconnu)
 
+
+
 # 2. Procédure d'installation
 
 Pour visualiser ce projet, il faut le faire tourner localement.
-Il s'agit donc de télécharger le zip et de l'extraire dans un dossier. Ce dossier est à ajouter dans un éditeur de code du type _Visual Studio Code_  et en utilisant une extension comme _LiveServer_, cela permet de visualiser le projet de manière locale sur un navigateur. 
+1. Installer _Visual Studio Code_ ainsi que l'extension _Live Server_
+2. Télécharger les fichiers index.html et AvalancheAccidentsSwitzerlandSince1995.csv.
+3. Ouvrir ces fichiers dans Visual Studio Code.
+4. Ouvrir "index.html" dans un navigateur Internet via le bouton go live.
 
-# 3. Contexte de développement
+
+# 3. Difficultés rencontrées
+
+L'une des principales difficultés a été de confronter les premières ambitions de visualisations à mes capacités et connaissances réelles en matière de programmation. Il y aurait donc de multiples manières d'améliorer et de pousser plus loin la visualisation de ces données. Celles qui me paraissent les plus immédiatement accessibles sans pour autant changer du tout au tout l'aspect de la visualisation sont décrites dans la section _Issues_ de ce github.
+
+# 4. Contexte de développement
 
 Ce projet a été développé par Baptiste Ruedin dans le cadre du cours _Visualisation de données_ dispensé par Isaac Pante (SLI, Lettres, UNIL)) durant le semestre de Printemps 2022.
 
