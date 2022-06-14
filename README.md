@@ -8,7 +8,7 @@ Mis à diposition par _l'Institut pour l'étude de la neige et des avalanches_ s
 <img width="1422" alt="Capture d’écran 2022-06-13 à 12 52 03" src="https://user-images.githubusercontent.com/100225833/173338507-572d1b69-5d79-4a1e-9663-4d09177d0cef.png">
 
 
-L'objectif du projet est de visualiser un graphique en "connected scatter plot" pour le canton du Valais, permettant de mettre en rapport les années hydrologiques et le nombre de morts par année dans le canton. 
+L'objectif du projet est de visualiser un graphique en "connected scatter plot" pour le canton du Valais, permettant de mettre en rapport les années hydrologiques et le nombre de morts par année dans le canton à cause d'avalanches. 
 
 <img width="1076" alt="Capture d’écran 2022-06-13 à 12 39 36" src="https://user-images.githubusercontent.com/100225833/173336435-e475ffcf-3e34-44b8-be0c-0e854c6599f0.png">
 
@@ -18,8 +18,8 @@ Ce projet utilise principalement la librairie D3 de javascript.
 
 => _Données_
 
-Chaque entrée du jeu de données correspond à une avalanches ayant fait des victimes. Celles-ci sont décrites par plusieurs catégories: 
-- le numéro d'identification de l'avalanches, 
+Chaque entrée du jeu de données correspond à une avalanche ayant fait des victimes. Celles-ci sont décrites par plusieurs catégories: 
+- le numéro d'identification de l'avalanche, 
 - la /date/, 
 - la qualité de la date, 
 - l'année hydrologique (de 1995/96 à 2020/21), 
