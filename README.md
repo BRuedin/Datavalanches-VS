@@ -10,7 +10,10 @@ Mis à diposition par _l'Institut pour l'étude de la neige et des avalanches_ s
 
 L'objectif du projet est de visualiser un graphique en "connected scatter plot" pour le canton du Valais, permettant de mettre en rapport les années hydrologiques et le nombre de morts par année dans le canton à cause d'avalanches. 
 
-<img width="1076" alt="Capture d’écran 2022-06-13 à 12 39 36" src="https://user-images.githubusercontent.com/100225833/173336435-e475ffcf-3e34-44b8-be0c-0e854c6599f0.png">
+<img width="1435" alt="Capture d’écran 2022-06-17 à 10 27 07" src="https://user-images.githubusercontent.com/100225833/174258975-b1e7cfb6-ec11-4b3f-bb8b-6001dc87271f.png">
+
+
+
 
 => _Outil_
 
