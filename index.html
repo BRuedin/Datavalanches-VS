@@ -15,8 +15,7 @@
     <script src = "https://cdn.jsdelivr.net/npm/d3@7.3.0/dist/d3.min.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/7.4.4/d3.min.js'></script>
     <div id="DatavalanchesVS"></div>
-    
-    
+
     <script>
        
         const hauteur = window.innerHeight;
@@ -146,45 +145,41 @@
                     .x(d => 67 + xScale(d[0]))
                     .y(d => yScale(d[1] -5)))
             
-            var Tooltip = d3.select("#DatavalanchesVS")
+            var tooltip = d3.select("#DatavalanchesVS")
                 .append("div")
                 .style("opacity", 0)
                 .attr("class", "tooltip")
-                .style("width", "auto")
-                .style("height", "auto")
+                .style("width", "500px")
+                .style("height", "70px")
                 .style("background-color", "white")
                 .style("border", "solid")
-                .style("border-width", "2px")
+                .style("border-width", "1px")
                 .style("border-radius", "5px")
                 .style("padding", "5px")
 
-      var mouseover = function(mortsVSAnnee) {
-        Tooltip
-            .style("opacity", 1)
-            .attr("r", 7)
-            .attr("fill", "darkblue")
-            .html("Données " + mortsVSAnnee)
-            .style("left", `${event.xScale+10}px`)
-            .style("top", `${event.yScale + 40}px`)
-      }
-      var mouseleave = function(mortsVSAnnee) {
-        Tooltip
-            .style("opacity", 0)
-            .attr("r", 5)
-            .attr("fill", "steelblue")
-      }
+            var mouseover = function(mortsVSAnnee) {
+                tooltip
+                    .style("opacity", 1)
+                    .html("Données" +mortsVSAnnee)
+            }
+            var mouseleave = function(mortsVSAnnee) {
+                tooltip
+                    .style("opacity", 0)
+                    .attr("fill", "steelblue")
+            }
             // Ajout des points
             svg.append("g").selectAll("dot")
             .data(mortsVSAnnee)
             .join("circle")
-                .attr("cx", d => 67 + xScale(d[0]))
+                .attr("cx", 55)
                 .attr("cy", function (d) {return yScale(d[1] -5)})
                 .attr("r", 5)
                 .attr("fill", "steelblue")
-                .on('mouseover', mouseover)
-                .on('mouseout', mouseleave);
-                
-                
+                .on("mouseover",mouseover)
+                .on("mouseout", mouseleave)
+                .transition()
+                    .duration(4000)
+                    .attr("cx", d => 67 + xScale(d[0]))   
         })
     </script>
 
